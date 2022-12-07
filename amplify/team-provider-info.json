@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-foodo-dev-43920-authRole",
+      "UnauthRoleArn": "arn:aws:iam::066563181901:role/amplify-foodo-dev-43920-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::066563181901:role/amplify-foodo-dev-43920-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-foodo-dev-43920-deployment",
+      "UnauthRoleName": "amplify-foodo-dev-43920-unauthRole",
+      "StackName": "amplify-foodo-dev-43920",
+      "StackId": "arn:aws:cloudformation:us-east-1:066563181901:stack/amplify-foodo-dev-43920/5e96cbc0-75d8-11ed-ae04-0a2977c255a7",
+      "AmplifyAppId": "d3iojtvilrkv4m"
+    }
+  }
+}

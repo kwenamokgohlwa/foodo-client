@@ -1,4 +1,17 @@
 {
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-fodo-staging-171439-authRole",
+      "UnauthRoleArn": "arn:aws:iam::066563181901:role/amplify-fodo-staging-171439-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::066563181901:role/amplify-fodo-staging-171439-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-fodo-staging-171439-deployment",
+      "UnauthRoleName": "amplify-fodo-staging-171439-unauthRole",
+      "StackName": "amplify-fodo-staging-171439",
+      "StackId": "arn:aws:cloudformation:us-east-1:066563181901:stack/amplify-fodo-staging-171439/ccc135b0-771b-11ed-9c10-0e14e0509e1f",
+      "AmplifyAppId": "d1uwa6xox412gz"
+    }
+  },
   "dev": {
     "awscloudformation": {
       "AuthRoleName": "amplify-foodo-dev-43920-authRole",
@@ -9,7 +22,7 @@
       "UnauthRoleName": "amplify-foodo-dev-43920-unauthRole",
       "StackName": "amplify-foodo-dev-43920",
       "StackId": "arn:aws:cloudformation:us-east-1:066563181901:stack/amplify-foodo-dev-43920/5e96cbc0-75d8-11ed-ae04-0a2977c255a7",
-      "AmplifyAppId": "d3iojtvilrkv4m"
+      "AmplifyAppId": "d1uwa6xox412gz"
     }
   }
 }

@@ -10,6 +10,11 @@
       "StackName": "amplify-fodo-staging-171439",
       "StackId": "arn:aws:cloudformation:us-east-1:066563181901:stack/amplify-fodo-staging-171439/ccc135b0-771b-11ed-9c10-0e14e0509e1f",
       "AmplifyAppId": "d1uwa6xox412gz"
+    },
+    "categories": {
+      "auth": {
+        "fodo": {}
+      }
     }
   },
   "dev": {

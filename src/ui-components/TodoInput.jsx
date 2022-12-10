@@ -33,9 +33,7 @@ const TodoInput = ({createTodo}) => {
                     <FieldGroupIconButton
                         ariaLabel="Search"
                         variation="link"
-                        onClick={() => {
-                            createTodo(title);
-                        }}
+                        onClick={() => createTodo(title)}
                     >
                         <AddIcon />
                     </FieldGroupIconButton>

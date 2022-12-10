@@ -1,53 +1,71 @@
 import * as React from 'react';
-import { Box } from "@mui/material";
 import Todos from "./Todos";
 import TodoInput from "./TodoInput";
-import {useEffect, useState} from "react";
-import {DataStore} from "aws-amplify";
-import {Todo as TodoModel} from "../models";
-import * as Store from "../services/store";
+import { useEffect, useState } from "react";
+import { DataStore } from "aws-amplify";
+import { Todo } from "../models";
 
 function Foodo() {
-    const [todo, setTodo] = useState({ title:'Add your first Foodo!', complete: false });
-    const [todos, setTodos] = useState([{ id: 1, title:'Add your first Foodo!', complete: false }]);
+    const [todo, setTodo] = useState({ id: 1,  title:'', complete: false });
+    const [todos, setTodos] = useState([{ id: 1, title: '', complete: false }]);
 
-    const [foodo, setFoodo] = useState(todo);
-    const [foodos, setFoodos] = useState(todos);
+    const fetchTodos = async () => {
+        try {
+            const foodos = await DataStore.query(Todo);
 
-    const createTodo = (title) => {
-        let updateTodos = [...todos];
-        updateTodos = [...updateTodos, { id: todos.length + 1, title, complete: false }];
-
-        setTodos(updateTodos);
+            setTodos(foodos);
+        } catch (err) {
+            console.error(err);
+        }
     };
 
-    const toggleTodo = (id) => {
-        let updateTodos = todos.map((todo) => {
-            return todo.id == id ? { ...todo, complete: !todo.complete } : { ...todo};
-        });
+    const createTodo = async (title) => {
+        try {
+            const foodo = new Todo({
+                "title": title,
+                "complete": false
+            });
+            await DataStore.save(foodo);
 
-        setTodos(updateTodos);
+            setTodo(foodo);
+        } catch (err) {
+            console.error(err);
+        }
     };
 
-    const deleteTodo = (id) => {
-        let updateTodos = todos.filter((todo) => {
-            return todo.id !== id;
-        });
+    const toggleTodo = async (id) => {
+        try {
+            const prevFoodo = await DataStore.query(Todo, id);
+            const foodo = Todo.copyOf(prevFoodo, nextFoodo => {
+                nextFoodo.complete = !prevFoodo.complete;
+            })
+            await DataStore.save(foodo);
 
-        setTodos(updateTodos)
+            setTodo(foodo);
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
+    const deleteTodo = async (id) => {
+        try {
+            const deleteFoodo = await DataStore.query(Todo, id);
+            await DataStore.delete(deleteFoodo);
+
+            setTodo(deleteFoodo);
+        } catch (err) {
+            console.error(err);
+        }
     };
 
     useEffect(() => {
-        let initialFoodo = { id: 0, title:'', complete: false };
-        let updatedFoodos = [...todos];
-
-        setFoodos(updatedFoodos);
-    }, [todo, todos]);
+        fetchTodos();
+    }, [todo]);
 
     return (
         <>
             <TodoInput createTodo={createTodo} />
-            <Todos todos={foodos} toggleTodo={toggleTodo} deleteTodo={deleteTodo} />
+            <Todos todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo} />
         </>
     );
 }

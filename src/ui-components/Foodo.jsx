@@ -19,6 +19,10 @@ function Foodo() {
         }
     };
 
+    useEffect(() => {
+        fetchTodos();
+    }, [todo]);
+
     const createTodo = async (title) => {
         try {
             const foodo = new Todo({
@@ -57,10 +61,6 @@ function Foodo() {
             console.error(err);
         }
     };
-
-    useEffect(() => {
-        fetchTodos();
-    }, [todo]);
 
     return (
         <>

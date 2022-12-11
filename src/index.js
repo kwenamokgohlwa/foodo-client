@@ -8,7 +8,7 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import { ThemeProvider, createTheme } from "@aws-amplify/ui-react";
-import { Amplify, Auth } from 'aws-amplify';
+import { Amplify } from "aws-amplify";
 
 import awsconfig from './aws-exports';
 

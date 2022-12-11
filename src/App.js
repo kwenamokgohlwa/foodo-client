@@ -1,13 +1,37 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import { Amplify, DataStore } from "aws-amplify";
 import {Button, withAuthenticator} from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
-import Foodo from "./ui-components/Foodo";
+import awsconfig from './aws-exports';
+import {Todo} from "./models";
+import Foodo from "./components/Foodo";
 import {Box} from "@mui/material";
+import { Loader } from '@aws-amplify/ui-react';
+
+Amplify.configure(awsconfig);
 
 function App({ signOut, user }) {
+    const [foodos, setFoodos] = useState([])
+
+    useEffect(() => {
+        fetchFoodos();
+
+        DataStore.observe(Todo).subscribe(() => fetchFoodos());
+    }, []);
+
+    const fetchFoodos = async () => {
+        try {
+            const _foodos = await DataStore.query(Todo);
+
+            setFoodos(_foodos)
+        } catch (err) {
+            console.error(err)
+        }
+    };
+
   return (
       <>
-        <Foodo />
+        <Foodo user={user} foodos={foodos} />
         <Box
               sx={{
                   marginTop: 5,
@@ -16,7 +40,10 @@ function App({ signOut, user }) {
                   alignItems: 'center',
               }}
           >
-            <Button onClick={signOut}>Sign Out</Button>
+            <Button onClick={() => {
+                signOut();
+                DataStore.clear();
+            }}>Sign Out</Button>
         </Box>
       </>
   );

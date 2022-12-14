@@ -1,15 +1,10 @@
 import * as React from 'react';
 import {useState} from "react";
-import { getOverrideProps } from "@aws-amplify/ui-react/internal";
 import {
-    Button, FieldGroupIconButton,
-    Flex,
-    Grid,
-    SwitchField,
+    FieldGroupIconButton,
     TextField,
 } from "@aws-amplify/ui-react";
 import AddIcon from '@mui/icons-material/Add';
-import * as Store from "../services/store";
 import {Box} from "@mui/material";
 
 const TodoInput = ({createTodo}) => {

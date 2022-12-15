@@ -6,9 +6,11 @@ frontend:
         - npm ci
     build:
       commands:
-        - echo '_ENDPOINT=$ENDPOINT' >> .env
-        - echo '_API_KEY=$API_KEY' >> .env
-        - echo '_REGION=$REGION' >> .env
+        - echo 'REACT_APP_ENDPOINT=$ENDPOINT' >> .env
+        - echo 'REACT_APP_USER_POOL_ID=$USER_POOL_ID' >> .env
+        - echo 'REACT_APP_IDENTITY_POOL_ID=$IDENTITY_POOL_ID' >> .env
+        - echo 'REACT_APP_USER_POOL_CLIENT_ID=$USER_POOL_CLIENT_ID' >> .env
+        - echo 'REACT_APP_REGION=$REGION' >> .env
         - npm run build
   artifacts:
     baseDirectory: build
@@ -17,3 +19,6 @@ frontend:
   cache:
     paths:
       - node_modules/**/*
+
+
+

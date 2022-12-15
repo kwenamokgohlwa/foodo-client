@@ -1,0 +1,77 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-foodo-main-134214-authRole",
+      "UnauthRoleArn": "arn:aws:iam::066563181901:role/amplify-foodo-main-134214-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::066563181901:role/amplify-foodo-main-134214-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-foodo-main-134214-deployment",
+      "UnauthRoleName": "amplify-foodo-main-134214-unauthRole",
+      "StackName": "amplify-foodo-main-134214",
+      "StackId": "arn:aws:cloudformation:us-east-1:066563181901:stack/amplify-foodo-main-134214/880853c0-7c6d-11ed-b187-12b75a536ae7",
+      "AmplifyAppId": "dbmujb1don6w2"
+    }
+  },
+  "api": {
+    "foodo-api": {
+      "service": "AppSync",
+      "output": {
+        "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "AMAZON_COGNITO_USER_POOLS"
+          },
+          "additionalAuthenticationProviders": null,
+          "userPoolConfig": {
+            "userPoolId": "us-east-1_l5CE5Lgvb",
+            "awsRegion": "us-east-1",
+            "defaultAction": "ALLOW",
+            "appIdClientRegex": "53ml63vu555gsrhrg9u2mc38a0"
+          }
+        },
+        "GraphQLAPIIdOutput": "vmrmz3h3lzhh3gi5mfwxredwyq",
+        "GraphQLAPIEndpointOutput": "https://rhtqqglgkfdudkgymoftjbdqxm.appsync-api.us-east-1.amazonaws.com/graphql",
+        "name": "foodo-api",
+        "region": "us-east-1"
+      },
+      "lastPushTimeStamp": "2022-12-15T11:43:46.189Z"
+    }
+  },
+  "auth": {
+    "foodo9d21db4c": {
+      "service": "Cognito",
+      "serviceType": "imported",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false,
+      "output": {
+        "UserPoolId": "us-east-1_l5CE5Lgvb",
+        "UserPoolName": "FoodoUserPool7ACB3AC2-qRFar8z76hS0",
+        "AppClientID": "53ml63vu555gsrhrg9u2mc38a0",
+        "AppClientIDWeb": "53ml63vu555gsrhrg9u2mc38a0",
+        "IdentityPoolId": "us-east-1:177b0e99-10a0-4884-8cb2-d9b6575d4fca",
+        "IdentityPoolName": "FoodoIdentityPool_sdhDo9MUYIOV"
+      },
+      "frontendAuthConfig": {
+        "socialProviders": [],
+        "usernameAttributes": [
+          "EMAIL"
+        ],
+        "signupAttributes": [],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": [
+            "REQUIRES_LOWERCASE",
+            "REQUIRES_UPPERCASE",
+            "REQUIRES_NUMBERS",
+            "REQUIRES_SYMBOLS"
+          ]
+        },
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      }
+    }
+  }
+}

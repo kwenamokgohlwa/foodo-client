@@ -9,11 +9,9 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import { ThemeProvider, createTheme } from "@aws-amplify/ui-react";
 import { Amplify } from "aws-amplify";
-
-import awsconfig from './aws-exports';
-
 import "@aws-amplify/ui-react/styles.css";
 import { studioTheme } from "./ui-components";
+import awsconfig from './aws-exports';
 
 const foodoTheme = createTheme({
     name: "foodoTheme",

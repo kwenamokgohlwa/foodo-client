@@ -5,9 +5,9 @@ export const onCreateTodo = /* GraphQL */ `
   subscription OnCreateTodo {
     onCreateTodo {
       id
+      owner
       title
       complete
-      owner
     }
   }
 `;
@@ -15,9 +15,9 @@ export const onUpdateTodo = /* GraphQL */ `
   subscription OnUpdateTodo {
     onUpdateTodo {
       id
+      owner
       title
       complete
-      owner
     }
   }
 `;
@@ -25,9 +25,9 @@ export const onDeleteTodo = /* GraphQL */ `
   subscription OnDeleteTodo {
     onDeleteTodo {
       id
+      owner
       title
       complete
-      owner
     }
   }
 `;

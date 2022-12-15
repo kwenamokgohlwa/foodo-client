@@ -5,9 +5,9 @@ export const listTodos = /* GraphQL */ `
   query ListTodos {
     listTodos {
       id
+      owner
       title
       complete
-      owner
     }
   }
 `;
@@ -15,9 +15,9 @@ export const getTodoById = /* GraphQL */ `
   query GetTodoById($todoId: String!) {
     getTodoById(todoId: $todoId) {
       id
+      owner
       title
       complete
-      owner
     }
   }
 `;

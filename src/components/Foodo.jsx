@@ -3,7 +3,7 @@ import Todos from "./Todos";
 import TodoInput from "./TodoInput";
 // import { DataStore } from "aws-amplify";
 // import { Todo } from "../models";
-// import {View} from "@aws-amplify/ui-react";
+import {View} from "@aws-amplify/ui-react";
 
 const createTodo = async (title) => {
     try {
@@ -43,10 +43,10 @@ const deleteTodo = async (id) => {
 function Foodo({user, foodos}) {
     console.log(foodos);
     return (
-        <>
+        <View>
             <TodoInput createTodo={createTodo} />
             <Todos todos={foodos} toggleTodo={toggleTodo} deleteTodo={deleteTodo} />
-        </>
+        </View>
     );
 }
 

@@ -1,0 +1,11 @@
+{
+  "auth": {
+    "foodo9d21db4c": {
+      "service": "Cognito",
+      "serviceType": "imported",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  }
+}

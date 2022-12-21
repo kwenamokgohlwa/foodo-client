@@ -4,7 +4,7 @@ import {Button, withAuthenticator} from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 import awsconfig from './aws-exports';
 import {Todo} from "./models";
-import Foodo from "./components/Foodo";
+import Foodos from "./components/Foodos";
 import {Box} from "@mui/material";
 
 Amplify.configure(awsconfig);
@@ -32,7 +32,7 @@ function App({ signOut, user }) {
 
   return (
       <>
-        <Foodo user={user} foodos={foodos} />
+        <Foodos user={user} foodos={foodos} />
         <Box
               sx={{
                   marginTop: 5,

@@ -20,7 +20,7 @@ const TodoInput = ({createTodo}) => {
             }}
         >
             <TextField
-                placeholder="Add Foodo"
+                placeholder="Add Foodos"
                 isRequired={true}
                 isReadOnly={false}
                 onChange={(e) => setTitle(e.currentTarget.value)}

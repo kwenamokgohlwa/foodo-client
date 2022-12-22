@@ -32,18 +32,24 @@ export default function TodoCreateForm(props) {
   const initialValues = {
     title: undefined,
     complete: false,
+    userTodosId: undefined,
   };
   const [title, setTitle] = React.useState(initialValues.title);
   const [complete, setComplete] = React.useState(initialValues.complete);
+  const [userTodosId, setUserTodosId] = React.useState(
+    initialValues.userTodosId
+  );
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     setTitle(initialValues.title);
     setComplete(initialValues.complete);
+    setUserTodosId(initialValues.userTodosId);
     setErrors({});
   };
   const validations = {
     title: [{ type: "Required" }],
-    complete: [{ type: "Required" }],
+    complete: [],
+    userTodosId: [],
   };
   const runValidationTasks = async (fieldName, value) => {
     let validationResponse = validateField(value, validations[fieldName]);
@@ -65,6 +71,7 @@ export default function TodoCreateForm(props) {
         let modelFields = {
           title,
           complete,
+          userTodosId,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -115,6 +122,7 @@ export default function TodoCreateForm(props) {
             const modelFields = {
               title: value,
               complete,
+              userTodosId,
             };
             const result = onChange(modelFields);
             value = result?.title ?? value;
@@ -140,6 +148,7 @@ export default function TodoCreateForm(props) {
             const modelFields = {
               title,
               complete: value,
+              userTodosId,
             };
             const result = onChange(modelFields);
             value = result?.complete ?? value;
@@ -154,12 +163,37 @@ export default function TodoCreateForm(props) {
         hasError={errors.complete?.hasError}
         {...getOverrideProps(overrides, "complete")}
       ></SwitchField>
+      <TextField
+        label="User todos id"
+        isRequired={false}
+        isReadOnly={false}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              title,
+              complete,
+              userTodosId: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.userTodosId ?? value;
+          }
+          if (errors.userTodosId?.hasError) {
+            runValidationTasks("userTodosId", value);
+          }
+          setUserTodosId(value);
+        }}
+        onBlur={() => runValidationTasks("userTodosId", userTodosId)}
+        errorMessage={errors.userTodosId?.errorMessage}
+        hasError={errors.userTodosId?.hasError}
+        {...getOverrideProps(overrides, "userTodosId")}
+      ></TextField>
       <Flex
         justifyContent="space-between"
         {...getOverrideProps(overrides, "CTAFlex")}
       >
         <Button
-          children="Sign Out"
+          children="Clear"
           type="reset"
           onClick={resetStateValues}
           {...getOverrideProps(overrides, "ClearButton")}
@@ -169,7 +203,7 @@ export default function TodoCreateForm(props) {
           {...getOverrideProps(overrides, "RightAlignCTASubFlex")}
         >
           <Button
-            children="Clear"
+            children="Cancel"
             type="button"
             onClick={() => {
               onCancel && onCancel();
@@ -177,7 +211,7 @@ export default function TodoCreateForm(props) {
             {...getOverrideProps(overrides, "CancelButton")}
           ></Button>
           <Button
-            children="Add"
+            children="Submit"
             type="submit"
             variation="primary"
             isDisabled={Object.values(errors).some((e) => e?.hasError)}

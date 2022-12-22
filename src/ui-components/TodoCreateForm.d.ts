@@ -15,16 +15,19 @@ export declare type ValidationFunction<T> = (value: T, validationResponse: Valid
 export declare type TodoCreateFormInputValues = {
     title?: string;
     complete?: boolean;
+    userTodosId?: string;
 };
 export declare type TodoCreateFormValidationValues = {
     title?: ValidationFunction<string>;
     complete?: ValidationFunction<boolean>;
+    userTodosId?: ValidationFunction<string>;
 };
 export declare type FormProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type TodoCreateFormOverridesProps = {
     TodoCreateFormGrid?: FormProps<GridProps>;
     title?: FormProps<TextFieldProps>;
     complete?: FormProps<SwitchFieldProps>;
+    userTodosId?: FormProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type TodoCreateFormProps = React.PropsWithChildren<{
     overrides?: TodoCreateFormOverridesProps | undefined | null;
